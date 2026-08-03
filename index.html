@@ -1,1 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BDMIL Operations | ZyeemZia™</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* =========================================
+           BASE STYLING & THEME (DEFAULT: LIGHT MODE) 
+           ========================================= */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
 
+        body { 
+            font-family: 'Rajdhani', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+            background: #f8fafc; 
+            color: #0f172a; 
+            text-align: center; 
+            padding: 50px 20px; 
+            line-height: 1.6; 
+            margin: 0;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease; 
+        }
+        .container { max-width: 950px; margin: 0 auto; position: relative; z-index: 1; }
+        
+        .header { margin-bottom: 30px; }
+        .header h1 { 
+            color: #0f172a; 
+            font-size: 42px; 
+            margin-bottom: 5px; 
+            letter-spacing: 2px; 
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+        .header p { 
+            color: #64748b; 
+            font-size: 16px; 
+            margin-top: 0; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            font-weight: 600;
+        }
+
+        .profile-section {
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 25px 35px;
+            margin-bottom: 50px;
+            text-align: justify;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        .profile-section h3 {
+            color: #0f172a;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 8px;
+            transition: all 0.3s ease;
+        }
+        .profile-section p {
+            color: #475569;
+            font-size: 16px;
+            margin: 0;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .profile-highlight { color: #0f172a; font-weight: 600; transition: color 0.3s ease; }
+        
+        .app-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); 
+            gap: 25px; 
+            margin-bottom: 40px; 
+        }
+        
+        .app-card { 
+            background: #ffffff; 
+            padding: 30px; 
+            border-radius: 16px; 
+            border: 1px solid #e2e8f0; 
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05); 
+            text-align: justify; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+            transition: all 0.3s ease; 
+        }
+        .app-card:hover { 
+            transform: translateY(-6px); 
+            border-color: #cbd5e1; 
+        }
+        .amber-accent:hover { box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.4); }
+        .blue-accent:hover { box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.15); border-color: rgba(59, 130, 246, 0.4); }
+        .emerald-accent:hover { box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.15); border-color: rgba(16, 185, 129, 0.4); }
+        
+        .app-card h2 { margin-top: 0; margin-bottom: 12px; font-size: 24px; font-weight: 700; letter-spacing: 0.5px; }
+        .amber-accent h2 { color: #f59e0b; }
+        .blue-accent h2 { color: #3b82f6; }
+        .emerald-accent h2 { color: #10b981; }
+        
+        .app-card p { color: #64748b; font-size: 16px; font-weight: 500; margin-bottom: 25px; flex-grow: 1; transition: color 0.3s ease; }
+        
+        .card-footer { 
+            border-top: 1px solid #e2e8f0; 
+            padding-top: 20px; 
+            margin-top: auto; 
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: border-color 0.3s ease;
+        }
+
+        /* CUSTOM DOWNLOAD BUTTON STYLING */
+        .custom-dl-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: #0f172a;
+            color: #f8fafc;
+            border: 1px solid #334155;
+            padding: 10px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        .custom-dl-btn svg { width: 18px; height: 18px; fill: currentColor; }
+        .custom-dl-btn:hover { transform: translateY(-2px); }
+
+        /* Button Accent Overrides on Hover */
+        .amber-accent .custom-dl-btn:hover { background: #f59e0b; border-color: #f59e0b; color: #000; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3); }
+        .blue-accent .custom-dl-btn:hover { background: #3b82f6; border-color: #3b82f6; color: #fff; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); }
+        .emerald-accent .custom-dl-btn:hover { background: #10b981; border-color: #10b981; color: #000; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3); }
+
+        .global-support { 
+            margin-top: 40px; 
+            padding-top: 20px; 
+            display: flex; 
+            justify-content: center;
+            gap: 20px; 
+            flex-wrap: wrap; 
+        }
+        .support-btn { 
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-family: inherit; 
+            color: #475569; 
+            text-decoration: none; 
+            font-weight: 600; 
+            font-size: 15px; 
+            border: 1px solid #cbd5e1; 
+            padding: 12px 24px; 
+            border-radius: 30px; 
+            letter-spacing: 1px;
+            transition: all 0.2s ease; 
+            cursor: pointer;
+            background: transparent;
+            line-height: 1.4;
+        }
+        .support-btn:hover { background: #e2e8f0; color: #0f172a; border-color: #94a3b8; }
+
+        .legal-footer { 
+            margin-top: 40px; 
+            padding-top: 20px; 
+            border-top: 1px solid #e2e8f0; 
+            color: #64748b; 
+            font-size: 13px; 
+            font-weight: 600; 
+            line-height: 1.8;
+            transition: border-color 0.3s ease, color 0.3s ease; 
+        }
+        body.dark-mode .legal-footer { 
+            border-top-color: #1f2937; 
+            color: #94a3b8; 
+        }
+        .legal-footer a { 
+            color: #3b82f6; 
+            text-decoration: none; 
+            font-weight: 700; 
+            display: inline-block;
+            margin-top: 5px;
+            transition: opacity 0.2s ease; 
+        }
+        .legal-footer a:hover { opacity: 0.7; }
+
+        /* THEME TOGGLE BUTTON CSS */
+        .theme-toggle-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            color: #475569;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        .theme-toggle-btn:hover { transform: scale(1.1); border-color: #94a3b8; color: #0f172a; }
+        
+        .icon-moon { display: block; }
+        .icon-sun { display: none; }
+
+        /* =========================================
+           DARK MODE OVERRIDES 
+           ========================================= */
+        body.dark-mode { background: #090d16; color: #f1f5f9; }
+        body.dark-mode .header h1 { color: #f8fafc; }
+        
+        body.dark-mode .profile-section { background: rgba(17, 24, 39, 0.6); border-color: #1f2937; box-shadow: inset 0 0 20px rgba(0,0,0,0.2); }
+        body.dark-mode .profile-section h3 { color: #e2e8f0; border-bottom-color: #334155; }
+        body.dark-mode .profile-section p { color: #94a3b8; }
+        
+        body.dark-mode .app-card { background: #111827; border-color: #1f2937; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3); }
+        body.dark-mode .app-card:hover { border-color: #374151; }
+        body.dark-mode .app-card p { color: #9ca3af; }
+        body.dark-mode .card-footer { border-top-color: #1f2937; }
+
+        body.dark-mode .app-card.amber-accent:hover { box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.4); }
+        body.dark-mode .app-card.blue-accent:hover { box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.15); border-color: rgba(59, 130, 246, 0.4); }
+        body.dark-mode .app-card.emerald-accent:hover { box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.15); border-color: rgba(16, 185, 129, 0.4); }
+        
+        /* Dark Mode Download Buttons */
+        body.dark-mode .custom-dl-btn { background: #1e293b; border-color: #334155; color: #f1f5f9; }
+        body.dark-mode .amber-accent .custom-dl-btn:hover { background: #f59e0b; border-color: #f59e0b; color: #000; }
+        body.dark-mode .blue-accent .custom-dl-btn:hover { background: #3b82f6; border-color: #3b82f6; color: #fff; }
+        body.dark-mode .emerald-accent .custom-dl-btn:hover { background: #10b981; border-color: #10b981; color: #000; }
+
+        body.dark-mode .support-btn { border-color: #334155; color: #94a3b8; }
+        body.dark-mode .support-btn:hover { background: #1e293b; color: #f8fafc; border-color: #475569; }
+
+        body.dark-mode .theme-toggle-btn { background: #111827; border-color: #334155; color: #94a3b8; box-shadow: 0 4px 6px rgba(0,0,0,0.3);}
+        body.dark-mode .theme-toggle-btn:hover { border-color: #475569; color: #f8fafc; }
+
+        body.dark-mode .icon-moon { display: none; }
+        body.dark-mode .icon-sun { display: block; }
+    </style>
+</head>
+<body>
+    <button id="themeToggle" class="theme-toggle-btn" title="Toggle Light/Dark Mode">
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+    </button>
+
+    <div class="container">
+        
+        <div class="header">
+            <h1>BDMIL Operations</h1>
+            <p>Secure Distribution Node</p>
+        </div>
+
+        <div class="profile-section">
+            <h3>Tactical Software Distribution</h3>
+            <p>Welcome to the official BDMIL deployment architecture operated by ZyeemZia™. This restricted portal serves as the dedicated distribution node for tactical operational software, intelligence parsing tools, and technical calculation frameworks. All repository links and distribution JSON feeds below are maintained continuously to ensure seamless joint-operation interoperability and data integrity in the field.</p>
+        </div>
+
+        <div class="app-grid">
+
+            <!-- App 1 -->
+            <div class="app-card blue-accent">
+                <div>
+                    <h2>GR CONVERTER PRO</h2>
+                    <p>The ultimate global international coordinate engine. Features format-agnostic grid conversions, off-grid topographical caching, and precision tracking. Direct access to the internal distribution pipeline.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="https://raw.githubusercontent.com/zyeemzia/grconverterpro-distr/refs/heads/main/update.json" class="custom-dl-btn" target="_blank">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4m4-5 5 5 5-5m-5 5V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        </svg>
+                        Access JSON Feed
+                    </a>
+                </div>
+            </div>
+
+            <!-- App 2 -->
+            <div class="app-card amber-accent">
+                <div>
+                    <h2>BD MIL ABBREVIATION</h2>
+                    <p>A complete offline tactical command center featuring advanced OCR intel scanning, document parsing, and an encrypted dictionary for defense abbreviations.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="https://github.com/zyeemzia/bd-mil-abbr-releases/blob/main/version.json" class="custom-dl-btn" target="_blank">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4m4-5 5 5 5-5m-5 5V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        </svg>
+                        Access Version Data
+                    </a>
+                </div>
+            </div>
+
+            <!-- App 3 -->
+            <div class="app-card emerald-accent">
+                <div>
+                    <h2>BD MIL WX</h2>
+                    <p>Advanced atmospheric and telemetry framework. Delivering high-precision meteorological diagnostics and offline topographical analysis designed for field operators.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="https://github.com/zyeemzia/bdmilwx-distr" class="custom-dl-btn" target="_blank">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        </svg>
+                        View Repository
+                    </a>
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="global-support">
+            <a class="support-btn" href="https://www.zyeemzia.com">RETURN TO MAIN COMMAND HUB</a>
+            <a class="support-btn" href="mailto:admin@zyeemzia.com">SIGNAL SUPPORT DESK | ADMIN@ZYEEMZIA.COM</a>
+        </div>
+
+        <div class="legal-footer">
+            Copyright © ZyeemZia<br>
+            Developer & Publisher: Zyeem Bin Zia | TIN: 455794641335<br>
+            Plot-109, Avenue-1, (Old Road-1), Mirpur DOHS, Thana: Mirpur, Dhaka-1216, Bangladesh<br>
+            <a href="https://policy.zyeemzia.com">ACCESS FULL LEGAL & CORPORATE POLICY HUB</a>
+        </div>
+
+    </div>
+
+    <script>
+        // --- THEME TOGGLE LOGIC (Shared LocalStorage with Main Site) ---
+        const themeBtn = document.getElementById('themeToggle');
+        const bodyElement = document.body;
+        
+        // This key 'matrixTheme' will sync the user's theme preference across your subdomains
+        if(localStorage.getItem('matrixTheme') === 'dark') {
+            bodyElement.classList.add('dark-mode');
+        }
+
+        themeBtn.addEventListener('click', () => {
+            bodyElement.classList.toggle('dark-mode');
+            
+            if(bodyElement.classList.contains('dark-mode')) {
+                localStorage.setItem('matrixTheme', 'dark');
+            } else {
+                localStorage.setItem('matrixTheme', 'light');
+            }
+        });
+    </script>
+</body>
+</html>
