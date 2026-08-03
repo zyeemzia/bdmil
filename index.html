@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BDMIL Operations | ZyeemZia™</title>
+    <title>BD MIL | ZyeemZia™</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -139,9 +139,11 @@
             letter-spacing: 1px;
             transition: all 0.3s ease;
             width: 100%;
+            cursor: pointer; /* Ensures it acts like a button */
         }
         .custom-dl-btn svg { width: 18px; height: 18px; fill: currentColor; }
         .custom-dl-btn:hover { transform: translateY(-2px); }
+        .custom-dl-btn:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
 
         /* Button Accent Overrides on Hover */
         .amber-accent .custom-dl-btn:hover { background: #f59e0b; border-color: #f59e0b; color: #000; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3); }
@@ -281,7 +283,7 @@
     <div class="container">
         
         <div class="header">
-            <h1>BDMIL Operations</h1>
+            <h1>BD MIL</h1>
             <p>Secure Distribution Node</p>
         </div>
 
@@ -292,39 +294,40 @@
 
         <div class="app-grid">
 
-            <!-- App 1 -->
+            <!-- App 1: Dynamic Download via JSON -->
             <div class="app-card blue-accent">
                 <div>
                     <h2>GR CONVERTER PRO</h2>
                     <p>The ultimate global international coordinate engine. Features format-agnostic grid conversions, off-grid topographical caching, and precision tracking. Direct access to the internal distribution pipeline.</p>
                 </div>
                 <div class="card-footer">
-                    <a href="https://raw.githubusercontent.com/zyeemzia/grconverterpro-distr/refs/heads/main/update.json" class="custom-dl-btn" target="_blank">
+                    <a href="#" onclick="fetchSmartDownload('https://raw.githubusercontent.com/zyeemzia/grconverterpro-distr/refs/heads/main/update.json', this); return false;" class="custom-dl-btn">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4m4-5 5 5 5-5m-5 5V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
                         </svg>
-                        Access JSON Feed
+                        Download
                     </a>
                 </div>
             </div>
 
-            <!-- App 2 -->
+            <!-- App 2: Dynamic Download via JSON -->
             <div class="app-card amber-accent">
                 <div>
                     <h2>BD MIL ABBREVIATION</h2>
                     <p>A complete offline tactical command center featuring advanced OCR intel scanning, document parsing, and an encrypted dictionary for defense abbreviations.</p>
                 </div>
                 <div class="card-footer">
-                    <a href="https://github.com/zyeemzia/bd-mil-abbr-releases/blob/main/version.json" class="custom-dl-btn" target="_blank">
+                    <!-- Note: URL converted to raw.githubusercontent.com so JSON can be parsed -->
+                    <a href="#" onclick="fetchSmartDownload('https://raw.githubusercontent.com/zyeemzia/bd-mil-abbr-releases/main/version.json', this); return false;" class="custom-dl-btn">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4m4-5 5 5 5-5m-5 5V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
                         </svg>
-                        Access Version Data
+                        Download
                     </a>
                 </div>
             </div>
 
-            <!-- App 3 -->
+            <!-- App 3: Static Repo Link -->
             <div class="app-card emerald-accent">
                 <div>
                     <h2>BD MIL WX</h2>
@@ -357,11 +360,66 @@
     </div>
 
     <script>
+        // --- SMART JSON FETCHER FOR DOWNLOAD BUTTONS ---
+        async function fetchSmartDownload(jsonUrl, btnElement) {
+            // Save original button state and set to loading
+            const originalHTML = btnElement.innerHTML;
+            btnElement.innerHTML = `
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="animation: spin 1s linear infinite;">
+                    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Fetching...`;
+            btnElement.style.pointerEvents = 'none';
+            btnElement.style.opacity = '0.7';
+
+            // Add simple spin animation CSS dynamically if not present
+            if (!document.getElementById('spinStyle')) {
+                const style = document.createElement('style');
+                style.id = 'spinStyle';
+                style.innerHTML = `@keyframes spin { 100% { transform: rotate(360deg); } }`;
+                document.head.appendChild(style);
+            }
+
+            try {
+                // Fetch JSON data with cache busting
+                const response = await fetch(jsonUrl + '?t=' + new Date().getTime());
+                if (!response.ok) throw new Error('Network response failed');
+                const data = await response.json();
+
+                // Smartly look for the APK download link
+                // It checks common keys, or falls back to looking for any URL ending in .apk
+                let apkUrl = data.url || data.download_url || data.downloadUrl || data.apkUrl || data.apk_url || data.link;
+
+                if (!apkUrl) {
+                    for (const key in data) {
+                        if (typeof data[key] === 'string' && (data[key].endsWith('.apk') || data[key].includes('releases/download'))) {
+                            apkUrl = data[key];
+                            break;
+                        }
+                    }
+                }
+
+                if (apkUrl) {
+                    // Trigger download
+                    window.location.href = apkUrl;
+                } else {
+                    alert('Command error: Download link could not be located in the configuration file.');
+                }
+            } catch (error) {
+                console.error('Fetch Error:', error);
+                alert('Connection failure: Unable to fetch the latest deployment protocol.');
+            } finally {
+                // Restore original button
+                btnElement.innerHTML = originalHTML;
+                btnElement.style.pointerEvents = 'auto';
+                btnElement.style.opacity = '1';
+            }
+        }
+
         // --- THEME TOGGLE LOGIC (Shared LocalStorage with Main Site) ---
         const themeBtn = document.getElementById('themeToggle');
         const bodyElement = document.body;
         
-        // This key 'matrixTheme' will sync the user's theme preference across your subdomains
         if(localStorage.getItem('matrixTheme') === 'dark') {
             bodyElement.classList.add('dark-mode');
         }
