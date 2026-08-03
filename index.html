@@ -75,7 +75,6 @@
             font-weight: 500;
             transition: color 0.3s ease;
         }
-        .profile-highlight { color: #0f172a; font-weight: 600; transition: color 0.3s ease; }
         
         .app-grid { 
             display: grid; 
@@ -139,7 +138,7 @@
             letter-spacing: 1px;
             transition: all 0.3s ease;
             width: 100%;
-            cursor: pointer; /* Ensures it acts like a button */
+            cursor: pointer;
         }
         .custom-dl-btn svg { width: 18px; height: 18px; fill: currentColor; }
         .custom-dl-btn:hover { transform: translateY(-2px); }
@@ -289,7 +288,7 @@
 
         <div class="profile-section">
             <h3>Tactical Software Distribution</h3>
-            <p>Welcome to the official BDMIL deployment architecture operated by ZyeemZia™. This restricted portal serves as the dedicated distribution node for tactical operational software, intelligence parsing tools, and technical calculation frameworks. All repository links and distribution JSON feeds below are maintained continuously to ensure seamless joint-operation interoperability and data integrity in the field.</p>
+            <p>Welcome to the official BDMIL deployment architecture operated by ZyeemZia™. This restricted portal is the primary secure download node for tactical operational software, intelligence parsing tools, and technical calculation frameworks. The smart-fetch protocols below interface directly with live distribution feeds, ensuring field operators instantly download the latest verified APK payloads for seamless joint-operation interoperability.</p>
         </div>
 
         <div class="app-grid">
@@ -317,7 +316,6 @@
                     <p>A complete offline tactical command center featuring advanced OCR intel scanning, document parsing, and an encrypted dictionary for defense abbreviations.</p>
                 </div>
                 <div class="card-footer">
-                    <!-- Note: URL converted to raw.githubusercontent.com so JSON can be parsed -->
                     <a href="#" onclick="fetchSmartDownload('https://raw.githubusercontent.com/zyeemzia/bd-mil-abbr-releases/main/version.json', this); return false;" class="custom-dl-btn">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
@@ -327,18 +325,19 @@
                 </div>
             </div>
 
-            <!-- App 3: Static Repo Link -->
+            <!-- App 3: Dynamic Download via JSON -->
             <div class="app-card emerald-accent">
                 <div>
                     <h2>BD MIL WX</h2>
                     <p>Advanced atmospheric and telemetry framework. Delivering high-precision meteorological diagnostics and offline topographical analysis designed for field operators.</p>
                 </div>
                 <div class="card-footer">
-                    <a href="https://github.com/zyeemzia/bdmilwx-distr" class="custom-dl-btn" target="_blank">
+                    <!-- Automatically pulls from the main branch update.json -->
+                    <a href="#" onclick="fetchSmartDownload('https://raw.githubusercontent.com/zyeemzia/bdmilwx-distr/main/update.json', this); return false;" class="custom-dl-btn">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
                         </svg>
-                        View Repository
+                        Download
                     </a>
                 </div>
             </div>
