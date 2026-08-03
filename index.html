@@ -288,7 +288,7 @@
 
         <div class="profile-section">
             <h3>Tactical Software Distribution</h3>
-            <p>Welcome to the official BDMIL deployment architecture operated by ZyeemZia™. This restricted portal is the primary secure download node for tactical operational software, intelligence parsing tools, and technical calculation frameworks. The smart-fetch protocols below interface directly with live distribution feeds, ensuring field operators instantly download the latest verified APK payloads for seamless joint-operation interoperability.</p>
+            <p>Welcome to the official BDMIL deployment architecture operated by ZyeemZia™. This restricted portal is the primary secure download node for tactical operational software, intelligence parsing tools, and technical calculation frameworks. The smart-fetch protocols below interface directly with live distribution feeds, ensuring BD MIL field operators instantly securely download the latest verified, ad-free APK payloads for seamless domestic joint-operation interoperability.</p>
         </div>
 
         <div class="app-grid">
@@ -297,7 +297,7 @@
             <div class="app-card blue-accent">
                 <div>
                     <h2>GR CONVERTER PRO</h2>
-                    <p>The ultimate global international coordinate engine. Features format-agnostic grid conversions, off-grid topographical caching, and precision tracking. Direct access to the internal distribution pipeline.</p>
+                    <p>A secure, localized coordinate mapping engine engineered exclusively for BD MIL operations. Features 100% ad-free, format-agnostic grid conversions, offline topographical caching, and encrypted precision tracking to strictly serve domestic defense workflows.</p>
                 </div>
                 <div class="card-footer">
                     <a href="#" onclick="fetchSmartDownload('https://raw.githubusercontent.com/zyeemzia/grconverterpro-distr/refs/heads/main/update.json', this); return false;" class="custom-dl-btn">
@@ -313,7 +313,7 @@
             <div class="app-card amber-accent">
                 <div>
                     <h2>BD MIL ABBREVIATION</h2>
-                    <p>A complete offline tactical command center featuring advanced OCR intel scanning, document parsing, and an encrypted dictionary for defense abbreviations.</p>
+                    <p>A self-contained, ad-free tactical command utility tailored directly for BD MIL personnel. Features fully offline OCR intel scanning, strict local document parsing, and a highly secure, encrypted dictionary of internal defense terminology.</p>
                 </div>
                 <div class="card-footer">
                     <a href="#" onclick="fetchSmartDownload('https://raw.githubusercontent.com/zyeemzia/bd-mil-abbr-releases/main/version.json', this); return false;" class="custom-dl-btn">
@@ -329,10 +329,9 @@
             <div class="app-card emerald-accent">
                 <div>
                     <h2>BD MIL WX</h2>
-                    <p>Advanced atmospheric and telemetry framework. Delivering high-precision meteorological diagnostics and offline topographical analysis designed for field operators.</p>
+                    <p>An advanced, localized atmospheric and telemetry framework restricted for BD MIL field operators. Delivers high-precision meteorological diagnostics and offline topographical analysis in a secure, completely ad-free operational environment.</p>
                 </div>
                 <div class="card-footer">
-                    <!-- Automatically pulls from the main branch update.json -->
                     <a href="#" onclick="fetchSmartDownload('https://raw.githubusercontent.com/zyeemzia/bdmilwx-distr/main/update.json', this); return false;" class="custom-dl-btn">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
@@ -386,7 +385,6 @@
                 const data = await response.json();
 
                 // Smartly look for the APK download link
-                // It checks common keys, or falls back to looking for any URL ending in .apk
                 let apkUrl = data.url || data.download_url || data.downloadUrl || data.apkUrl || data.apk_url || data.link;
 
                 if (!apkUrl) {
