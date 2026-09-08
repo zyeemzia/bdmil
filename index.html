@@ -102,11 +102,13 @@
         .amber-accent:hover { box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.4); }
         .blue-accent:hover { box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.15); border-color: rgba(59, 130, 246, 0.4); }
         .emerald-accent:hover { box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.15); border-color: rgba(16, 185, 129, 0.4); }
+        .purple-accent:hover { box-shadow: 0 10px 25px -5px rgba(139, 92, 246, 0.15); border-color: rgba(139, 92, 246, 0.4); } /* NEW OFFICE ACCENT */
         
         .app-card h2 { margin-top: 0; margin-bottom: 12px; font-size: 24px; font-weight: 700; letter-spacing: 0.5px; }
         .amber-accent h2 { color: #f59e0b; }
         .blue-accent h2 { color: #3b82f6; }
         .emerald-accent h2 { color: #10b981; }
+        .purple-accent h2 { color: #8b5cf6; } /* NEW OFFICE ACCENT */
         
         .app-card p { color: #64748b; font-size: 16px; font-weight: 500; margin-bottom: 25px; flex-grow: 1; transition: color 0.3s ease; }
         
@@ -148,6 +150,7 @@
         .amber-accent .custom-dl-btn:hover { background: #f59e0b; border-color: #f59e0b; color: #000; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3); }
         .blue-accent .custom-dl-btn:hover { background: #3b82f6; border-color: #3b82f6; color: #fff; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); }
         .emerald-accent .custom-dl-btn:hover { background: #10b981; border-color: #10b981; color: #000; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3); }
+        .purple-accent .custom-dl-btn:hover { background: #8b5cf6; border-color: #8b5cf6; color: #fff; box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3); } /* NEW OFFICE ACCENT */
 
         .global-support { 
             margin-top: 40px; 
@@ -244,12 +247,14 @@
         body.dark-mode .app-card.amber-accent:hover { box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.4); }
         body.dark-mode .app-card.blue-accent:hover { box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.15); border-color: rgba(59, 130, 246, 0.4); }
         body.dark-mode .app-card.emerald-accent:hover { box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.15); border-color: rgba(16, 185, 129, 0.4); }
+        body.dark-mode .app-card.purple-accent:hover { box-shadow: 0 10px 25px -5px rgba(139, 92, 246, 0.15); border-color: rgba(139, 92, 246, 0.4); } /* NEW OFFICE ACCENT */
         
         /* Dark Mode Download Buttons */
         body.dark-mode .custom-dl-btn { background: #1e293b; border-color: #334155; color: #f1f5f9; }
         body.dark-mode .amber-accent .custom-dl-btn:hover { background: #f59e0b; border-color: #f59e0b; color: #000; }
         body.dark-mode .blue-accent .custom-dl-btn:hover { background: #3b82f6; border-color: #3b82f6; color: #fff; }
         body.dark-mode .emerald-accent .custom-dl-btn:hover { background: #10b981; border-color: #10b981; color: #000; }
+        body.dark-mode .purple-accent .custom-dl-btn:hover { background: #8b5cf6; border-color: #8b5cf6; color: #fff; } /* NEW OFFICE ACCENT */
 
         body.dark-mode .support-btn { border-color: #334155; color: #94a3b8; }
         body.dark-mode .support-btn:hover { background: #1e293b; color: #f8fafc; border-color: #475569; }
@@ -293,7 +298,23 @@
 
         <div class="app-grid">
 
-            <!-- App 1: Dynamic Download via JSON -->
+            <!-- App 1: BD MIL OFFICE (NEW) -->
+            <div class="app-card purple-accent">
+                <div>
+                    <h2>BD MIL OFFICE</h2>
+                    <p>The ultimate offline tactical command center. Features military-grade document decryption, dual-optics PDF editing, OCR intel scanning, and secure strategic plotting for complete domestic joint-operation interoperability.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="#" onclick="fetchSmartDownload('https://raw.githubusercontent.com/zyeemzia/bdmiloffice-distr/refs/heads/main/version.json', this); return false;" class="custom-dl-btn">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        </svg>
+                        Download
+                    </a>
+                </div>
+            </div>
+
+            <!-- App 2: Dynamic Download via JSON -->
             <div class="app-card blue-accent">
                 <div>
                     <h2>BD MIL GR CONVERTER PRO</h2>
@@ -309,7 +330,7 @@
                 </div>
             </div>
 
-            <!-- App 2: Dynamic Download via JSON -->
+            <!-- App 3: Dynamic Download via JSON -->
             <div class="app-card amber-accent">
                 <div>
                     <h2>BD MIL ABBR</h2>
@@ -325,7 +346,7 @@
                 </div>
             </div>
 
-            <!-- App 3: Dynamic Download via JSON -->
+            <!-- App 4: Dynamic Download via JSON -->
             <div class="app-card emerald-accent">
                 <div>
                     <h2>BD MIL WX</h2>
