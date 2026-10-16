@@ -7,43 +7,43 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <style>
         /* =========================================
-           BASE STYLING & THEME (DEFAULT: LIGHT MODE) 
+           BASE STYLING & THEME (DEFAULT: LIGHT MODE)
            ========================================= */
         *, *::before, *::after {
             box-sizing: border-box;
         }
 
-        body { 
-            font-family: 'Rajdhani', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-            background: #f8fafc; 
-            color: #0f172a; 
-            text-align: center; 
-            padding: 50px 20px; 
-            line-height: 1.6; 
+        body {
+            font-family: 'Rajdhani', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+            text-align: center;
+            padding: 50px 20px;
+            line-height: 1.6;
             margin: 0;
             overflow-x: hidden;
-            transition: background-color 0.3s ease, color 0.3s ease; 
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         .container { max-width: 950px; margin: 0 auto; position: relative; z-index: 1; }
-        
+
         .header { margin-bottom: 30px; }
-        .header h1 { 
-            color: #0f172a; 
-            font-size: 42px; 
-            margin-bottom: 5px; 
-            letter-spacing: 2px; 
+        .header h1 {
+            color: #0f172a;
+            font-size: 42px;
+            margin-bottom: 5px;
+            letter-spacing: 2px;
             font-weight: 700;
             transition: color 0.3s ease;
         }
-        .header p { 
-            color: #64748b; 
-            font-size: 16px; 
-            margin-top: 0; 
-            text-transform: uppercase; 
-            letter-spacing: 2px; 
+        .header p {
+            color: #64748b;
+            font-size: 16px;
+            margin-top: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
             font-weight: 600;
         }
 
@@ -75,49 +75,73 @@
             font-weight: 500;
             transition: color 0.3s ease;
         }
-        
-        .app-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); 
-            gap: 25px; 
-            margin-bottom: 40px; 
+
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
         }
-        
-        .app-card { 
-            background: #ffffff; 
-            padding: 30px; 
-            border-radius: 16px; 
-            border: 1px solid #e2e8f0; 
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05); 
-            text-align: justify; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: space-between; 
-            transition: all 0.3s ease; 
+
+        .app-card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            text-align: justify;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
         }
-        .app-card:hover { 
-            transform: translateY(-6px); 
-            border-color: #cbd5e1; 
+        .app-card:hover {
+            transform: translateY(-6px);
+            border-color: #cbd5e1;
         }
         .amber-accent:hover { box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.4); }
         .blue-accent:hover { box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.15); border-color: rgba(59, 130, 246, 0.4); }
         .emerald-accent:hover { box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.15); border-color: rgba(16, 185, 129, 0.4); }
         .purple-accent:hover { box-shadow: 0 10px 25px -5px rgba(139, 92, 246, 0.15); border-color: rgba(139, 92, 246, 0.4); } /* OFFICE ACCENT */
         .cyan-accent:hover { box-shadow: 0 10px 25px -5px rgba(6, 182, 212, 0.15); border-color: rgba(6, 182, 212, 0.4); } /* MORSE CODE ACCENT */
-        
+        .olive-accent:hover { box-shadow: 0 10px 25px -5px rgba(132, 154, 52, 0.18); border-color: rgba(132, 154, 52, 0.45); } /* GADGET ACCENT */
+
         .app-card h2 { margin-top: 0; margin-bottom: 12px; font-size: 24px; font-weight: 700; letter-spacing: 0.5px; }
         .amber-accent h2 { color: #f59e0b; }
         .blue-accent h2 { color: #3b82f6; }
         .emerald-accent h2 { color: #10b981; }
         .purple-accent h2 { color: #8b5cf6; } /* OFFICE ACCENT */
         .cyan-accent h2 { color: #06b6d4; } /* MORSE CODE ACCENT */
-        
+        .olive-accent h2 { color: #6b7f2a; } /* GADGET ACCENT */
+        body.dark-mode .olive-accent h2 { color: #b5c463; }
+
         .app-card p { color: #64748b; font-size: 16px; font-weight: 500; margin-bottom: 25px; flex-grow: 1; transition: color 0.3s ease; }
-        
-        .card-footer { 
-            border-top: 1px solid #e2e8f0; 
-            padding-top: 20px; 
-            margin-top: auto; 
+
+        /* LIVE VERSION + NEW TAGS (filled from each app's update feed) */
+        .card-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; min-height: 22px; }
+        .tag {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 2px 10px;
+            border-radius: 20px;
+            border: 1px solid #cbd5e1;
+            color: #475569;
+            background: #f1f5f9;
+        }
+        .tag-new { border-color: #c9a75a; color: #7a5c1c; background: #fbf3df; }
+        .tag-web { border-color: #f59e0b; color: #92400e; background: #fef3c7; }
+        .tag:empty { display: none; }
+        body.dark-mode .tag { background: #1e293b; border-color: #334155; color: #cbd5e1; }
+        body.dark-mode .tag-web { background: rgba(245, 158, 11, 0.12); border-color: #f59e0b; color: #fcd34d; }
+        body.dark-mode .tag-new { background: rgba(212, 178, 106, 0.12); border-color: #d4b26a; color: #e8cf94; }
+
+        .card-footer {
+            border-top: 1px solid #e2e8f0;
+            padding-top: 20px;
+            margin-top: auto;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -154,57 +178,58 @@
         .emerald-accent .custom-dl-btn:hover { background: #10b981; border-color: #10b981; color: #000; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3); }
         .purple-accent .custom-dl-btn:hover { background: #8b5cf6; border-color: #8b5cf6; color: #fff; box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3); } /* OFFICE ACCENT */
         .cyan-accent .custom-dl-btn:hover { background: #06b6d4; border-color: #06b6d4; color: #000; box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3); } /* MORSE CODE ACCENT */
+        .olive-accent .custom-dl-btn:hover { background: #6b7f2a; border-color: #6b7f2a; color: #fff; box-shadow: 0 4px 12px rgba(107, 127, 42, 0.3); } /* GADGET ACCENT */
 
-        .global-support { 
-            margin-top: 40px; 
-            padding-top: 20px; 
-            display: flex; 
+        .global-support {
+            margin-top: 40px;
+            padding-top: 20px;
+            display: flex;
             justify-content: center;
-            gap: 20px; 
-            flex-wrap: wrap; 
+            gap: 20px;
+            flex-wrap: wrap;
         }
-        .support-btn { 
+        .support-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            font-family: inherit; 
-            color: #475569; 
-            text-decoration: none; 
-            font-weight: 600; 
-            font-size: 15px; 
-            border: 1px solid #cbd5e1; 
-            padding: 12px 24px; 
-            border-radius: 30px; 
+            font-family: inherit;
+            color: #475569;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            border: 1px solid #cbd5e1;
+            padding: 12px 24px;
+            border-radius: 30px;
             letter-spacing: 1px;
-            transition: all 0.2s ease; 
+            transition: all 0.2s ease;
             cursor: pointer;
             background: transparent;
             line-height: 1.4;
         }
         .support-btn:hover { background: #e2e8f0; color: #0f172a; border-color: #94a3b8; }
 
-        .legal-footer { 
-            margin-top: 40px; 
-            padding-top: 20px; 
-            border-top: 1px solid #e2e8f0; 
-            color: #64748b; 
-            font-size: 13px; 
-            font-weight: 600; 
+        .legal-footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+            color: #64748b;
+            font-size: 13px;
+            font-weight: 600;
             line-height: 1.8;
-            transition: border-color 0.3s ease, color 0.3s ease; 
+            transition: border-color 0.3s ease, color 0.3s ease;
         }
-        body.dark-mode .legal-footer { 
-            border-top-color: #1f2937; 
-            color: #94a3b8; 
+        body.dark-mode .legal-footer {
+            border-top-color: #1f2937;
+            color: #94a3b8;
         }
-        .legal-footer a { 
-            color: #3b82f6; 
-            text-decoration: none; 
-            font-weight: 700; 
+        .legal-footer a {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 700;
             display: inline-block;
             margin-top: 5px;
-            transition: opacity 0.2s ease; 
+            transition: opacity 0.2s ease;
         }
         .legal-footer a:hover { opacity: 0.7; }
 
@@ -228,20 +253,20 @@
             transition: all 0.3s ease;
         }
         .theme-toggle-btn:hover { transform: scale(1.1); border-color: #94a3b8; color: #0f172a; }
-        
+
         .icon-moon { display: block; }
         .icon-sun { display: none; }
 
         /* =========================================
-           DARK MODE OVERRIDES 
+           DARK MODE OVERRIDES
            ========================================= */
         body.dark-mode { background: #090d16; color: #f1f5f9; }
         body.dark-mode .header h1 { color: #f8fafc; }
-        
+
         body.dark-mode .profile-section { background: rgba(17, 24, 39, 0.6); border-color: #1f2937; box-shadow: inset 0 0 20px rgba(0,0,0,0.2); }
         body.dark-mode .profile-section h3 { color: #e2e8f0; border-bottom-color: #334155; }
         body.dark-mode .profile-section p { color: #94a3b8; }
-        
+
         body.dark-mode .app-card { background: #111827; border-color: #1f2937; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3); }
         body.dark-mode .app-card:hover { border-color: #374151; }
         body.dark-mode .app-card p { color: #9ca3af; }
@@ -252,7 +277,8 @@
         body.dark-mode .app-card.emerald-accent:hover { box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.15); border-color: rgba(16, 185, 129, 0.4); }
         body.dark-mode .app-card.purple-accent:hover { box-shadow: 0 10px 25px -5px rgba(139, 92, 246, 0.15); border-color: rgba(139, 92, 246, 0.4); } /* OFFICE ACCENT */
         body.dark-mode .app-card.cyan-accent:hover { box-shadow: 0 10px 25px -5px rgba(6, 182, 212, 0.15); border-color: rgba(6, 182, 212, 0.4); } /* MORSE CODE ACCENT */
-        
+        body.dark-mode .app-card.olive-accent:hover { box-shadow: 0 10px 25px -5px rgba(181, 196, 99, 0.15); border-color: rgba(181, 196, 99, 0.4); } /* GADGET ACCENT */
+
         /* Dark Mode Download Buttons */
         body.dark-mode .custom-dl-btn { background: #1e293b; border-color: #334155; color: #f1f5f9; }
         body.dark-mode .amber-accent .custom-dl-btn:hover { background: #f59e0b; border-color: #f59e0b; color: #000; }
@@ -260,6 +286,7 @@
         body.dark-mode .emerald-accent .custom-dl-btn:hover { background: #10b981; border-color: #10b981; color: #000; }
         body.dark-mode .purple-accent .custom-dl-btn:hover { background: #8b5cf6; border-color: #8b5cf6; color: #fff; } /* OFFICE ACCENT */
         body.dark-mode .cyan-accent .custom-dl-btn:hover { background: #06b6d4; border-color: #06b6d4; color: #000; } /* MORSE CODE ACCENT */
+        body.dark-mode .olive-accent .custom-dl-btn:hover { background: #b5c463; border-color: #b5c463; color: #000; } /* GADGET ACCENT */
 
         body.dark-mode .support-btn { border-color: #334155; color: #94a3b8; }
         body.dark-mode .support-btn:hover { background: #1e293b; color: #f8fafc; border-color: #475569; }
@@ -290,7 +317,7 @@
     </button>
 
     <div class="container">
-        
+
         <div class="header">
             <h1>BD MIL</h1>
             <p>Secure Distribution Node</p>
@@ -298,19 +325,37 @@
 
         <div class="profile-section">
             <h3>Tactical Software Distribution</h3>
-            <p>Welcome to the official BD MIL deployment architecture operated by ZyeemZia™. This restricted portal is the primary secure download node for tactical operational software, intelligence parsing tools, and technical calculation frameworks. The smart-fetch protocols below interface directly with live distribution feeds, ensuring BD MIL field operators instantly securely download the latest verified, ad-free APK payloads for seamless domestic joint-operation interoperability.</p>
+            <p>Welcome to the official BD MIL deployment architecture operated by ZyeemZia™. This restricted portal is the primary secure download node for tactical operational software, field-craft and corps planning tools, intelligence parsing tools, and technical calculation frameworks. The smart-fetch protocols below interface directly with live distribution feeds, ensuring BD MIL field operators instantly and securely download the latest verified, ad-free APK payloads for seamless domestic joint-operation interoperability. Each card shows the live version currently deployed.</p>
         </div>
 
         <div class="app-grid">
 
-            <!-- App 1: BD MIL OFFICE -->
+            <!-- App 1: BD MIL GADGET -->
+            <div class="app-card olive-accent">
+                <div>
+                    <div class="card-tags"><span class="tag" data-version-for="gadget"></span></div>
+                    <h2>BD MIL GADGET</h2>
+                    <p>The all-in-one tactical field suite for BD MIL operators. Guided route follow with voice and fully offline maps, a crash-safe tracker, compass and clinometer, sun and moon planning, resection, LED signalling and report formats &mdash; plus CORPS tools for ARTY, ARMD, INF, ENGR, MED, ORD, SUP and SIGS with map pick, 8-figure GR entry on the BD map sheets, and TRUE / MAG / GRID north. Completely ad-free.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="#" data-version-key="gadget" onclick="fetchSmartDownload('https://raw.githubusercontent.com/zyeemzia/bdmilgadget-distr/refs/heads/main/update.json', this); return false;" class="custom-dl-btn">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        </svg>
+                        Download
+                    </a>
+                </div>
+            </div>
+
+            <!-- App 2: BD MIL OFFICE -->
             <div class="app-card purple-accent">
                 <div>
+                    <div class="card-tags"><span class="tag" data-version-for="office"></span></div>
                     <h2>BD MIL OFFICE</h2>
                     <p>The ultimate offline tactical command center. Features military-grade document decryption, dual-optics PDF editing, OCR intel scanning, and secure strategic plotting for complete domestic joint-operation interoperability.</p>
                 </div>
                 <div class="card-footer">
-                    <a href="#" onclick="fetchSmartDownload('https://raw.githubusercontent.com/zyeemzia/bdmiloffice-distr/refs/heads/main/version.json', this); return false;" class="custom-dl-btn">
+                    <a href="#" data-version-key="office" onclick="fetchSmartDownload('https://raw.githubusercontent.com/zyeemzia/bdmiloffice-distr/refs/heads/main/version.json', this); return false;" class="custom-dl-btn">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
                         </svg>
@@ -319,14 +364,15 @@
                 </div>
             </div>
 
-            <!-- App 2: BD MIL Morse Code (NEW) -->
+            <!-- App 3: BD MIL Morse Code -->
             <div class="app-card cyan-accent">
                 <div>
+                    <div class="card-tags"><span class="tag" data-version-for="morse"></span></div>
                     <h2>BD MIL Morse Code</h2>
                     <p>A tactical signal engine restricted for BD MIL operators. Features sample-accurate Morse audio, hardware-level torch and vibration keying, adaptive microphone decoding, and a full offline training suite — completely ad-free.</p>
                 </div>
                 <div class="card-footer">
-                    <a href="#" onclick="fetchSmartDownload('https://raw.githubusercontent.com/zyeemzia/bd-mil-morse-releases/main/version.json', this); return false;" class="custom-dl-btn">
+                    <a href="#" data-version-key="morse" onclick="fetchSmartDownload('https://raw.githubusercontent.com/zyeemzia/bd-mil-morse-releases/main/version.json', this); return false;" class="custom-dl-btn">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
                         </svg>
@@ -335,14 +381,15 @@
                 </div>
             </div>
 
-            <!-- App 3: BD MIL WX -->
+            <!-- App 4: BD MIL WX -->
             <div class="app-card emerald-accent">
                 <div>
+                    <div class="card-tags"><span class="tag" data-version-for="wx"></span></div>
                     <h2>BD MIL WX</h2>
                     <p>An advanced, localized atmospheric and telemetry framework restricted for BD MIL field operators. Delivers high-precision meteorological diagnostics and offline topographical analysis in a secure, completely ad-free operational environment.</p>
                 </div>
                 <div class="card-footer">
-                    <a href="#" onclick="fetchSmartDownload('https://raw.githubusercontent.com/zyeemzia/bdmilwx-distr/main/update.json', this); return false;" class="custom-dl-btn">
+                    <a href="#" data-version-key="wx" onclick="fetchSmartDownload('https://raw.githubusercontent.com/zyeemzia/bdmilwx-distr/main/update.json', this); return false;" class="custom-dl-btn">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
                         </svg>
@@ -351,14 +398,15 @@
                 </div>
             </div>
 
-            <!-- App 4: BD MIL GR CONVERTER PRO -->
+            <!-- App 5: BD MIL GR CONVERTER PRO -->
             <div class="app-card blue-accent">
                 <div>
+                    <div class="card-tags"><span class="tag" data-version-for="gr"></span></div>
                     <h2>BD MIL GR CONVERTER PRO</h2>
                     <p>A secure, localized coordinate mapping engine engineered exclusively for BD MIL operations. Features 100% ad-free, format-agnostic grid conversions, offline topographical caching, and encrypted precision tracking to strictly serve domestic defense workflows.</p>
                 </div>
                 <div class="card-footer">
-                    <a href="#" onclick="fetchSmartDownload('https://raw.githubusercontent.com/zyeemzia/grconverterpro-distr/refs/heads/main/update.json', this); return false;" class="custom-dl-btn">
+                    <a href="#" data-version-key="gr" onclick="fetchSmartDownload('https://raw.githubusercontent.com/zyeemzia/grconverterpro-distr/refs/heads/main/update.json', this); return false;" class="custom-dl-btn">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
                         </svg>
@@ -367,24 +415,43 @@
                 </div>
             </div>
 
-            <!-- App 5: BD MIL ABBR -->
+            <!-- App 6: BD MIL ABBR -->
             <div class="app-card amber-accent">
                 <div>
+                    <div class="card-tags"><span class="tag" data-version-for="abbr"></span></div>
                     <h2>BD MIL ABBR</h2>
                     <p>A self-contained, ad-free tactical command utility tailored directly for BD MIL personnel. Features fully offline OCR intel scanning, strict local document parsing, and a highly secure, encrypted dictionary of internal defense terminology.</p>
                 </div>
                 <div class="card-footer">
-                    <a href="#" onclick="fetchSmartDownload('https://raw.githubusercontent.com/zyeemzia/bd-mil-abbr-releases/main/version.json', this); return false;" class="custom-dl-btn">
+                    <a href="#" data-version-key="abbr" onclick="fetchSmartDownload('https://raw.githubusercontent.com/zyeemzia/bd-mil-abbr-releases/main/version.json', this); return false;" class="custom-dl-btn">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
                         </svg>
                         Download
+                    </a>
+                </div>
+            </div>
+
+
+            <!-- App 7: BD MIL ABBR WEB (browser version, installable from the browser) -->
+            <div class="app-card amber-accent">
+                <div>
+                    <div class="card-tags"><span class="tag tag-web">Web App</span><span class="tag">Installable</span></div>
+                    <h2>BD MIL ABBR WEB</h2>
+                    <p>The web edition of BD MIL ABBR. Search the defense terminology dictionary straight from any browser &mdash; phone, tablet or desktop &mdash; with no APK needed. Use the browser&rsquo;s install or &ldquo;Add to Home screen&rdquo; option to keep it as an app on any device, or share the link in one tap. Ideal for office PCs and quick look-ups on the move.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="https://bdmilabbrweb.zyeemzia.com/" target="_blank" rel="noopener" class="custom-dl-btn">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        </svg>
+                        Open Web App
                     </a>
                 </div>
             </div>
 
         </div>
-        
+
         <div class="global-support">
             <a class="support-btn" href="https://www.zyeemzia.com">RETURN TO MAIN COMMAND HUB</a>
             <a class="support-btn" href="mailto:admin@zyeemzia.com">SIGNAL SUPPORT DESK | ADMIN@ZYEEMZIA.COM</a>
@@ -400,6 +467,33 @@
     </div>
 
     <script>
+        // --- SHARED: read an app's feed (cache-busted) ---
+        async function readFeed(jsonUrl) {
+            const response = await fetch(jsonUrl + '?t=' + new Date().getTime());
+            if (!response.ok) throw new Error('Network response failed');
+            return response.json();
+        }
+
+        // Smartly look for the APK download link, whatever the feed calls it.
+        function findApkUrl(data) {
+            let apkUrl = data.url || data.download_url || data.downloadUrl || data.apkUrl || data.apk_url || data.link;
+            if (!apkUrl) {
+                for (const key in data) {
+                    if (typeof data[key] === 'string' && (data[key].endsWith('.apk') || data[key].includes('releases/download'))) {
+                        apkUrl = data[key];
+                        break;
+                    }
+                }
+            }
+            return apkUrl;
+        }
+
+        // Smartly look for the version name, whatever the feed calls it.
+        function findVersion(data) {
+            const v = data.versionName || data.version_name || data.version || data.latestVersion || data.latest_version;
+            return (typeof v === 'string' || typeof v === 'number') ? String(v).replace(/^v/i, '') : '';
+        }
+
         // --- SMART JSON FETCHER FOR DOWNLOAD BUTTONS ---
         async function fetchSmartDownload(jsonUrl, btnElement) {
             // Save original button state and set to loading
@@ -421,22 +515,8 @@
             }
 
             try {
-                // Fetch JSON data with cache busting
-                const response = await fetch(jsonUrl + '?t=' + new Date().getTime());
-                if (!response.ok) throw new Error('Network response failed');
-                const data = await response.json();
-
-                // Smartly look for the APK download link
-                let apkUrl = data.url || data.download_url || data.downloadUrl || data.apkUrl || data.apk_url || data.link;
-
-                if (!apkUrl) {
-                    for (const key in data) {
-                        if (typeof data[key] === 'string' && (data[key].endsWith('.apk') || data[key].includes('releases/download'))) {
-                            apkUrl = data[key];
-                            break;
-                        }
-                    }
-                }
+                const data = await readFeed(jsonUrl);
+                const apkUrl = findApkUrl(data);
 
                 if (apkUrl) {
                     // Trigger download
@@ -455,17 +535,34 @@
             }
         }
 
+        // --- LIVE VERSION TAGS: each card shows the version its feed is serving ---
+        function loadLiveVersions() {
+            document.querySelectorAll('[data-version-key]').forEach(async (btn) => {
+                const key = btn.getAttribute('data-version-key');
+                const tag = document.querySelector('[data-version-for="' + key + '"]');
+                const match = (btn.getAttribute('onclick') || '').match(/'(https:[^']+)'/);
+                if (!tag || !match) return;
+                try {
+                    const version = findVersion(await readFeed(match[1]));
+                    if (version) tag.textContent = 'v' + version;
+                } catch (e) {
+                    // Feed not reachable yet: leave the tag hidden.
+                }
+            });
+        }
+        loadLiveVersions();
+
         // --- THEME TOGGLE LOGIC (Shared LocalStorage with Main Site) ---
         const themeBtn = document.getElementById('themeToggle');
         const bodyElement = document.body;
-        
+
         if(localStorage.getItem('matrixTheme') === 'dark') {
             bodyElement.classList.add('dark-mode');
         }
 
         themeBtn.addEventListener('click', () => {
             bodyElement.classList.toggle('dark-mode');
-            
+
             if(bodyElement.classList.contains('dark-mode')) {
                 localStorage.setItem('matrixTheme', 'dark');
             } else {
